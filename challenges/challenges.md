@@ -23,3 +23,39 @@ z = Zombie.create(name: 'Joe', graveyard: 'Last house on the left')
 #<Zombie id: 4, name: "Joe", graveyard: "Last house on the left">
 Created a Zombie record.
 ```
+
+####FIND II
+###Find the last Zombie in the database, but don't use IDs
+```ruby
+$ z = Zombie.last
+#<Zombie id: 3, name: "Katie", graveyard: "My Father's Basement">
+Found the last Zombie!
+```
+
+####QUERY
+####Find all Zombies ordered by their names.
+
+```ruby
+$ z = Zombie.all.order(:name)
+#<ActiveRecord::Relation [#<Zombie id: 2, name: "Ashley", graveyard: "Glen Haven Memorial Cemetery">, #<Zombie id: 1, name: "Bob", graveyard: "Chapel Hill Cemetery">, #<Zombie id: 3, name: "Katie", graveyard: "My Father's Basement">]>
+Found all Zombies ordered by their names.
+```
+
+####UPDATE
+####Update Zombie 3's graveyard to 'Benny Hills Memorial'
+
+```ruby
+$ z = Zombie.find(3).update(graveyard: 'Benny Hills Memorial')
+true
+Successfully updated Zombie 3's graveyard
+```
+
+
+####DESTROY
+####Destroy the Zombie with an ID of 3.
+```ruby
+$ z = Zombie.find(3).destroy
+#<Zombie id: 3, name: "Katie", graveyard: "My Father's Basement">
+Destroyed Zombie 3.
+```
+
