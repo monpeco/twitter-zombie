@@ -59,3 +59,60 @@ $ z = Zombie.find(3).destroy
 Destroyed Zombie 3.
 ```
 
+--
+
+####CREATE MODEL
+####Define a Zombie model.
+
+app/models/zombie.rb
+```ruby
+class Zombie < ActiveRecord::Base
+end
+```
+
+####VALIDATIONS I
+####Add a validation that checks for the presence of a Zombie's name
+
+```ruby
+class Zombie < ActiveRecord::Base
+  validates :name, presence: true
+end
+```
+
+####VALIDATIONS II
+####Add a validation that checks for the uniqueness of a Zombie's name.
+```ruby
+class Zombie < ActiveRecord::Base
+  validates :name, uniqueness: true
+end
+```
+
+####VALIDATIONS III
+####Validate both the uniqueness and the presence of a Zombie's name on a single line, using the new validation syntax.
+```ruby
+class Zombie < ActiveRecord::Base
+  validates :name, uniqueness: true, presence: true
+end
+```
+
+####BELONGS TO
+####A Weapon belongs to a Zombie. Create that relationship.
+```ruby
+class Weapon < ActiveRecord::Base
+  belongs_to :zombie
+end
+```
+
+####RELATIONSHIP FIND
+####Assuming the models and relationships are properly defined, find all the weapons that belong to Zombie 'Ashley'.
+```ruby
+$ Zombie.find(1).weapons 
+#<ActiveRecord::Associations::CollectionProxy [#<Weapon id: 1, name: "Hammer", strength: 1, zombie_id: 1>]>
+Successfully found all of Ashley's weapons.
+```
+
+
+
+
+
+
