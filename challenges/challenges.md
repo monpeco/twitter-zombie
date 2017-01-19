@@ -111,8 +111,11 @@ $ Zombie.find(1).weapons
 Successfully found all of Ashley's weapons.
 ```
 
-
-
+```ruby
+$  Zombie.where(:name => "Ashley").first.weapons
+#<ActiveRecord::Associations::CollectionProxy [#<Weapon id: 1, name: "Hammer", strength: 1, zombie_id: 1>]>
+Successfully found all of Ashley's weapons.
+```
 
 
 
