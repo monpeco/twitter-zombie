@@ -117,5 +117,119 @@ $  Zombie.where(:name => "Ashley").first.weapons
 Successfully found all of Ashley's weapons.
 ```
 
+--
 
+####VIEWS SIMPLE
+####Print out the zombie's name and graveyard.
+
+app/views/zombies/show.html.erb
+```ruby
+<% zombie = Zombie.first %>
+
+<h1><%= #insert zombie name here %></h1>
+
+<p>
+  <%= # insert zombie graveyard here %>
+</p>
+```
+
+```ruby
+<h1><%= zombie.name  %></h1>
+
+<p>
+  <%= zombie.graveyard %>
+</p>
+```
+
+
+
+####LINKING
+####Link to the zombie's show page. Use the zombie's name as the anchor text
+
+```ruby
+<% zombie = Zombie.first %>
+
+<p>
+<%= # insert zombie link here %>
+</p>
+```
+
+```ruby
+<p>
+<%= link_to zombie.name, zombie %>
+</p>
+```
+
+
+
+####EACH BLOCKS
+####Use an each block to print the names of all the zombies.
+
+```ruby
+<% zombies = Zombie.all %>
+
+<ul>
+<% # insert block here %>
+</ul>
+```
+
+```ruby
+<ul>
+<% zombies.each do |z| %>
+  <%= z.name %>
+<% end %>
+</ul>
+```
+
+
+
+####IF
+####In the each block, if a zombie has more than one tweet, print out SMART ZOMBIE.
+
+```ruby
+<% zombies = Zombie.all %>
+
+<ul>
+  <% zombies.each do |zombie| %>
+    <li>
+      <%= zombie.name %>
+      # add if statement here
+    </li>
+  <% end %>
+</ul>
+```
+
+```ruby
+<ul>
+  <% zombies.each do |zombie| %>
+    <li>
+      <%= zombie.name %>
+      <%= 'SMART ZOMBIE' if zombie.tweets.count > 1 %>
+    </li>
+  <% end %>
+</ul>
+```
+
+####LINKING IN BLOCKS
+####In the each block, make the zombie's name link to its edit page.
+
+```ruby
+<ul>
+  <% zombies.each do |zombie| %>
+    <li>
+      <%= zombie.name %>
+    </li>
+  <% end %>
+</ul>
+```
+
+```ruby
+<ul>
+  <% zombies.each do |zombie| %>
+    <li>
+      <%= link_to zombie.name, edit_zombie_path(zombie) %>
+    </li>
+  <% end %>
+</ul>
+```
 
