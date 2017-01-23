@@ -362,3 +362,88 @@ class ZombiesController < ApplicationController
 end
 
 ```
+
+--
+
+####RESOURCE ROUTE
+####Create a resources route for zombies.
+
+
+```ruby
+TwitterForZombies::Application.routes.draw do
+  
+end
+```
+
+```ruby
+TwitterForZombies::Application.routes.draw do
+  resources :zombies
+end
+```
+
+####ROUTE MATCHING
+###Create a custom route so that '/undead' will go to the undead action on the ZombiesController.
+
+```ruby
+TwitterForZombies::Application.routes.draw do
+
+end
+```
+
+```ruby
+TwitterForZombies::Application.routes.draw do
+  resources :tweets
+  get '/undead' => 'zombies#undead'
+end
+```
+
+####ROUTE REDIRECTING
+###Create a redirect for '/undead' to '/zombies'
+
+
+
+```ruby
+TwitterForZombies::Application.routes.draw do
+
+end
+```
+
+```ruby
+TwitterForZombies::Application.routes.draw do
+  resources :tweets
+  get'/undead' => redirect('/zombies')
+end
+```
+
+####ROOT ROUTE
+####Create a root route to the ZombiesController index action.
+
+```ruby
+TwitterForZombies::Application.routes.draw do
+
+end
+```
+
+
+```ruby
+TwitterForZombies::Application.routes.draw do
+  resources :zombies
+  root :to => "zombies#index"
+end
+```
+
+####NAMED ROUTE
+####Create a named route. It should generate a path like '/zombies/:name' where :name is a parameter, and points to the index action in ZombiesController. Name the route 'graveyard'
+
+```ruby
+TwitterForZombies::Application.routes.draw do
+  get '', to: '', as: ''
+end
+```
+
+```ruby
+TwitterForZombies::Application.routes.draw do
+  get '/zombies/:name', to: 'zombies#index', as: 'graveyard'
+end
+```
+
